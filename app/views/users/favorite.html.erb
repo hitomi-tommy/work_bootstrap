@@ -1,0 +1,21 @@
+<h1>お気に入り一覧 </h1>
+  <% @favorites.each do |favorite| %>
+      <div class ="favorites">
+        <table>
+          <tr>
+            <td>
+            <%= link_to blog_path(favorite) do%>
+            <% end %>
+            </td>
+          <br>
+          <tr>
+            <td>
+              <p><%= favorite.blog.title %></p>
+              <p><%= favorite.blog.content %></p>
+            </td>
+          </tr>
+          <br>
+        </table>
+      </div>
+  <% end %>
+  <p><%= link_to "投稿一覧に戻る", blogs_path %></p>
