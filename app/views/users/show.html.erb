@@ -1,3 +1,29 @@
 <h1><%= @user.name %>のページ</h1>
 <p>メールアドレス: <%= @user.email %></p>
-<%= link_to 'お気に入り一覧', "/users/#{@user.id}/favorites" %>
+
+
+<div class="container">
+  <h2 class="favorites">お気に入り一覧 </h2>
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+
+      <% @user.favorites.each do |favorite| %>
+
+      <div class="post-preview">
+          <h2 class="post-title">
+            <%= link_to blog_path(favorite) do %>
+            <%= favorite.blog.title %>
+            <% end %>
+          </h2>
+          <h3 class="post-subtitle">
+            <%= favorite.blog.content %>
+          </h3>
+          <h3>投稿者<%= favorite.blog.user.name %></h3>
+        </a>
+        <p class="post-meta"><%= favorite.blog.created_at %></p>
+      </div>
+      <hr>
+      <% end %>
+    </div>
+  </div>
+</div>
